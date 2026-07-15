@@ -1,5 +1,8 @@
 # Validador de Seguridad para Paracaidismo
 
+## Autor:
+
+Sergio Ajú
 ## Análisis
 - **Entrada:** Objeto de estado con viento, visibilidad y chequeo de equipo.
 - **Proceso:** Evaluación de reglas de seguridad en cascada (primero equipo, luego clima).

@@ -12,7 +12,7 @@ const competidoresDePingPong = [
 ];
 ```
 
-### Proceso
+### Procesos
 
 ```javascript
 1. Validar que existan competidores.

@@ -1,21 +1,21 @@
 const Playlist = [
-    { titulo: "Bohemian Rhapsody", duracionSegundos: 354, reproducciones: 1500000, explicitas: false },
-    { titulo: "Song With Negative Duration", duracionSegundos: -120, reproducciones: 50000, explicitas: false },
-    { titulo: "Blinding Lights", duracionSegundos: 200, reproducciones: 3000000, explicitas: false },
-    { titulo: "Ghost Track Zero Plays", duracionSegundos: 180, reproducciones: 0, explicitas: true },
-    { titulo: "Shape of You", duracionSegundos: 233, reproducciones: 2500000, explicitas: false }
+    { titulo: "Bohemian Rhapsody", duracionMinutos: 5.9, anioLanzamiento: 1975, rankPopularidad: 1 },
+    { titulo: "Blinding Lights", duracionMinutos: 3.2, anioLanzamiento: 2019, rankPopularidad: 2 },
+    { titulo: "Shape of You", duracionMinutos: 3.9, anioLanzamiento: 2017, rankPopularidad: 3 },
+    { titulo: "Hotel California", duracionMinutos: 6.5, anioLanzamiento: 1976, rankPopularidad: 4 },
+    { titulo: "Stairway to Heaven", duracionMinutos: 8.0, anioLanzamiento: 1971, rankPopularidad: 5 }
 ];
 
-let inconsistentes = [];
-let detectar_inconsistencia = (c) => (c.duracionSegundos <= 0) || (c.reproducciones < 0);
+let mejorSecuencia = Playlist[0];
+let calcular_puntaje_secuencia = (c) => (c.anioLanzamiento * 0.5) - (c.duracionMinutos * 10) - (c.rankPopularidad * 50);
 
 if (Playlist.length === 0) {
-    console.log("No hay canciones registradas en la playlist para analizar.");
+    console.log("No hay canciones registradas en la playlist para evaluar la secuencia numérica.");
 } else {
     Playlist.forEach((cancion) => {
-        if (detectar_inconsistencia(cancion)) {
-            inconsistentes.push(cancion);
+        if (calcular_puntaje_secuencia(cancion) > calcular_puntaje_secuencia(mejorSecuencia)) {
+            mejorSecuencia = cancion;
         }
     });
-    console.log(`Se detectaron ${inconsistentes.length} canciones con inconsistencias en sus datos.`);
+    console.log(`La canción con mejor puntaje en la secuencia numérica evaluada es "${mejorSecuencia.titulo}"`);
 }

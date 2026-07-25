@@ -1,21 +1,21 @@
-const Vehiculos = [
-    { placa: "ABC-123", desgasteFrenos: 15, nivelAceite: 80, temperaturaMotor: 90 },
-    { placa: "XYZ-789", desgasteFrenos: 85, nivelAceite: 40, temperaturaMotor: 115 },
-    { placa: "LMN-456", desgasteFrenos: 50, nivelAceite: 70, temperaturaMotor: 95 },
-    { placa: "RST-321", desgasteFrenos: 92, nivelAceite: 20, temperaturaMotor: 120 },
-    { placa: "JKL-654", desgasteFrenos: 30, nivelAceite: 90, temperaturaMotor: 88 }
+const Reparaciones = [
+    { codigo: "REP-001", urgencia: 3, costo: 150000, tiempoEstimado: 2 },
+    { codigo: "REP-002", urgencia: 5, costo: 450000, tiempoEstimado: 5 },
+    { codigo: "REP-003", urgencia: 1, costo: 80000, tiempoEstimado: 1 },
+    { codigo: "REP-004", urgencia: 4, costo: 300000, tiempoEstimado: 3 },
+    { codigo: "REP-005", urgencia: 2, costo: 120000, tiempoEstimado: 2 }
 ];
 
-let vehiculoCritico = Vehiculos[0];
-let calcular_nivel_riesgo = (v) => v.desgasteFrenos + (100 - v.nivelAceite) + (v.temperaturaMotor > 100 ? 50 : 0);
+let mayorPrioridad = Reparaciones[0];
+let calcular_prioridad = (r) => (r.urgencia * 200) + (r.costo * 0.001) - (r.tiempoEstimado * 50);
 
-if (Vehiculos.length === 0) {
-    console.log("No hay vehículos registrados en el taller mecánico.");
+if (Reparaciones.length === 0) {
+    console.log("No hay reparaciones registradas en el taller mecánico.");
 } else {
-    Vehiculos.forEach((vehiculo) => {
-        if (calcular_nivel_riesgo(vehiculo) > calcular_nivel_riesgo(vehiculoCritico)) {
-            vehiculoCritico = vehiculo;
+    Reparaciones.forEach((reparacion) => {
+        if (calcular_prioridad(reparacion) > calcular_prioridad(mayorPrioridad)) {
+            mayorPrioridad = reparacion;
         }
     });
-    console.log(`El vehículo con mayor nivel de riesgo y límites superados es el de placa ${vehiculoCritico.placa}`);
+    console.log(`La reparación con mayor prioridad establecida es la código ${mayorPrioridad.codigo}`);
 }

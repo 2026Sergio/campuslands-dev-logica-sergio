@@ -1,0 +1,4 @@
+# Ejercicio 90
+
+# Explicación
+En el siguiente ejercicio se realizó un script para procesar un caso de lectura de instrucciones en un registro de viajes y turismo, aplicando una regla estructurada en funciones pequeñas que evalúa el rendimiento combinando la cantidad de atracciones disponibles, el impuesto de turista y la calificación del guía local. A través de esa regla y usando una función flecha junto a un ciclo forEach y una condicional if, se comparan los elementos de la lista para identificar cuál destino turístico cumple de manera óptima con las instrucciones y obtiene el puntaje más alto.
